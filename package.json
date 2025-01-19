@@ -1,0 +1,29 @@
+{
+  "name": "dynamic-chain-of-responsibility",
+  "version": "0.0.1",
+  "description": "Implementation of the Chain of Responsibility pattern in Typescript",
+  "main": "dist/src/index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && swc src --config-file .swcrc -d dist --strip-leading-paths"
+  },
+  "keywords": [
+    "Typescript",
+    "Chain",
+    "of",
+    "Responsibility",
+    "pattern"
+  ],
+  "author": "Vladislav Nevsky",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.8",
+    "rimraf": "^6.0.1"
+  }
+}
