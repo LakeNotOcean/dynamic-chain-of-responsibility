@@ -23,7 +23,9 @@
     "keepClassNames": false
   },
   "module": {
-    "type": "nodenext"
+    "type": "commonjs",
+    "noInterop": false
   },
+  "minify": true,
   "isModule": false
 }
