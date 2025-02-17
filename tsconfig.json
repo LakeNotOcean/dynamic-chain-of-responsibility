@@ -1,9 +1,23 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "module": "NodeNext",
+    "declaration": true,
+    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "outDir": "./dist",
     "rootDir": "./src",
-    "composite": true,
-    "noEmit": true
+    "sourceMap": false,
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
   },
   "include": ["./src/**/*"]
 }

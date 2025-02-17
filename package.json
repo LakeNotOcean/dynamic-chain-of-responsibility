@@ -7,8 +7,9 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && swc src --config-file .swcrc -d dist --strip-leading-paths"
+    "build": "tsc --build"
   },
+  "type": "module",
   "keywords": [
     "Typescript",
     "Chain",
@@ -19,8 +20,6 @@
   "author": "Vladislav Nevsky",
   "license": "ISC",
   "devDependencies": {
-    "@swc/cli": "^0.6.0",
-    "@swc/core": "^1.10.16",
     "rimraf": "^6.0.1"
   }
 }
