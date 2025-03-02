@@ -2,13 +2,13 @@ import { Handler } from "./handler.js";
 
 type ChainParameters<T> = {
   /**
-   * Whether chain has no handlers
-   */
-  isEmpty: boolean;
-  /**
    * Reference to last handler in a chain
    */
-  currentHandler: Handler<T> | null;
+  lastHandler: Handler<T> | null;
+  /**
+   * Reference to first handler in a chain
+   */
+  firstHandlder: Handler<T> | null;
 };
 
 /**
@@ -18,8 +18,8 @@ type ChainParameters<T> = {
  */
 export function createChain<T>(...handlers: Handler<T>[]): Handler<T> {
   let parameters: ChainParameters<T> = {
-    isEmpty: true,
-    currentHandler: null,
+    lastHandler: null,
+    firstHandlder: null,
   };
 
   for (const handler of handlers) {
@@ -27,9 +27,9 @@ export function createChain<T>(...handlers: Handler<T>[]): Handler<T> {
   }
 
   const handle = (options: T) => {
-    return parameters.isEmpty
-      ? null
-      : parameters.currentHandler.handle(options);
+    return parameters.firstHandlder
+      ? parameters.firstHandlder.handle(options)
+      : null;
   };
 
   const setNext = (handler: Handler<T>) => {
@@ -52,13 +52,13 @@ function updateHandlers<T>(
   chainParameters: ChainParameters<T>,
   handler: Handler<T>
 ) {
-  if (chainParameters.isEmpty) {
-    chainParameters.currentHandler = handler;
-    chainParameters.isEmpty = false;
+  if (!chainParameters.firstHandlder) {
+    chainParameters.firstHandlder = handler;
+    chainParameters.lastHandler = handler;
     return;
   }
 
-  chainParameters.currentHandler.setNext(handler);
-  chainParameters.currentHandler = handler;
+  chainParameters.lastHandler.setNext(handler);
+  chainParameters.lastHandler = handler;
   return;
 }
